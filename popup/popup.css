@@ -1,0 +1,18 @@
+.toggle {
+    background-color: rgb(250, 149, 149);
+    color: white;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-stretch: expanded;
+    border-style: none;
+    padding: 0.4em 4em;
+    border-radius: 2em;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: papayawhip;
+}

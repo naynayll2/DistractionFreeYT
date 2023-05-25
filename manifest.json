@@ -1,21 +1,21 @@
 {
     "manifest_version" : 2,
-    "nanme" : "DistractionFreeYT",
+    "name" : "DistractionFreeYT",
     "version" : "1.0",
 
     "description" : "Remove all recommended videos from YouTube pages in order to make YouTube hepful for focused studying",
-    "homepage_url" : "not decided yet",
     "icons" : {
         "48" : "AAAA"
     },
-
-    "permissions": [
-        "activeTab"
-    ],
     
-    "browser_action": {
-        "default_icon": "icons/beasts-32.png",
-        "default_title": "Beastify",
-        "default_popup": "popup/choose_beast.html"
-    }
+    "permissions": [
+        "https://www.youtube.com/*"
+    ],
+        
+    "content_scripts": [
+        {
+            "matches" : ["https://www.youtube.com/*"],
+            "js" : ["removeDistractions.js"]
+        }
+    ]
 }
