@@ -1,5 +1,4 @@
 function mutationCallback(mutationList, observer) {
-    console.log("in mutation callback");
     for (const mutation of mutationList) {
         if (mutation.type === "childList") {
             removeDistractions();
@@ -13,28 +12,41 @@ function removeDistractions() {
     const sidebar = document.querySelector("#contentContainer.tp-yt-app-drawer");
     const container = document.querySelector("#container.style-scope.ytd-masthead");
     const end = document.querySelector("#end.style-scope.ytd-masthead");
-    const search = document.getElementById('search');
+    const search = document.querySelector('#search.style-scope.ytd-masthead');
+    const videoRecommended = document.querySelector('#secondary.style-scope.ytd-watch-flexy');
+    const comments = document.querySelector('#sections.style-scope.ytd-comments')
+    const url =  window.location.href;
+    const videoPage = url.includes('watch');
 
+    console.log(url);
     if (end) {
         end.style.display = 'none';
     }
-    if (search) {
-        const width = screen.width
+
+    if (comments) {
+        comments.style.display = 'none'
     }
-    if (container) {
+    if (videoPage && videoRecommended) {
+        videoRecommended.style.display = 'none';
+    }
+    if (search) {
+        const width = screen.width;
+        search.style.width = Math.floor(width / 3) + 'px';
+    }
+    if (container && !videoPage) {
         container.style.flexDirection = "column";
+    } else if (videoPage) {
+        container.style.flexDirection = "row";
     }
     if (sidebar) {
         sidebar.style.display = 'none';
-    }
+    }   
     if (chips) {
         chips.style.display = 'none';
     }
     if (grid) {
         grid.style.display = 'none';
     }
- 
-    console.log("Distractions removed");
 }
 
 function observeDOM() {
